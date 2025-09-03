@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Jogos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Loja de Jogos</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Jogos</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="games">
+            <h2>Jogos em Destaque</h2>
+            <div class="game-list">
+                <div class="game-item">
+                    <img src="https://via.placeholder.com/150" alt="Jogo 1">
+                    <h3>Jogo A</h3>
+                    <p>Descrição curta do Jogo A.</p>
+                    <p><strong>R$ 99,90</strong></p>
+                    <button class="buy-btn" onclick="buyGame('Jogo A')">Comprar</button>
+                </div>
+                <div class="game-item">
+                    <img src="https://via.placeholder.com/150" alt="Jogo 2">
+                    <h3>Jogo B</h3>
+                    <p>Descrição curta do Jogo B.</p>
+                    <p><strong>R$ 79,90</strong></p>
+                    <button class="buy-btn" onclick="buyGame('Jogo B')">Comprar</button>
+                </div>
+                <div class="game-item">
+                    <img src="https://via.placeholder.com/150" alt="Jogo 3">
+                    <h3>Jogo C</h3>
+                    <p>Descrição curta do Jogo C.</p>
+                    <p><strong>R$ 59,90</strong></p>
+                    <button class="buy-btn" onclick="buyGame('Jogo C')">Comprar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Loja de Jogos - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
