@@ -12,6 +12,26 @@ const cardsArray = [
     'Sydney', 'Perth',
 ];
 
+// Mapeamento de cidades para seus respectivos países
+const citiesToCountry = {
+    'Paris': 'França',
+    'Lyon': 'França',
+    'Madrid': 'Espanha',
+    'Barcelona': 'Espanha',
+    'São Paulo': 'Brasil',
+    'Belo Horizonte': 'Brasil',
+    'Roma': 'Itália',
+    'Turim': 'Itália',
+    'Atenas': 'Grécia',
+    'Santorini': 'Grécia',
+    'Acapulco': 'México',
+    'Cancún': 'México',
+    'Toronto': 'Canadá',
+    'Vancouver': 'Canadá',
+    'Sydney': 'Austrália',
+    'Perth': 'Austrália',
+};
+
 // Embaralhar as cartas
 function shuffle(cards) {
     for (let i = cards.length - 1; i > 0; i--) {
@@ -56,6 +76,10 @@ function checkMatch() {
         matchedCards.push(card1, card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
+
+        // Exibir o nome do país quando duas cidades do mesmo país são combinadas
+        const country = citiesToCountry[card1.dataset.value];
+        setTimeout(() => alert(`Você combinou duas cidades da ${country}!`), 500);
     } else {
         setTimeout(() => {
             card1.classList.remove('flipped');
