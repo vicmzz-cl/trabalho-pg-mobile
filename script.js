@@ -1,4 +1,4 @@
-const board = document.getElementById('game-board');
+const board = document.getElementById('game-board'); 
 
 // Cartas e suas imagens
 const cardsArray = [
@@ -12,26 +12,6 @@ const cardsArray = [
     'Sydney', 'Perth',
 ];
 
-// Mapeamento de cidades para seus respectivos países
-const citiesToCountry = {
-    'Paris': 'França',
-    'Lyon': 'França',
-    'Madrid': 'Espanha',
-    'Barcelona': 'Espanha',
-    'São Paulo': 'Brasil',
-    'Belo Horizonte': 'Brasil',
-    'Roma': 'Itália',
-    'Turim': 'Itália',
-    'Atenas': 'Grécia',
-    'Santorini': 'Grécia',
-    'Acapulco': 'México',
-    'Cancún': 'México',
-    'Toronto': 'Canadá',
-    'Vancouver': 'Canadá',
-    'Sydney': 'Austrália',
-    'Perth': 'Austrália',
-};
-
 // Embaralhar as cartas
 function shuffle(cards) {
     for (let i = cards.length - 1; i > 0; i--) {
@@ -43,6 +23,7 @@ function shuffle(cards) {
 let flippedCards = [];
 let matchedCards = [];
 
+// Criar o tabuleiro de jogo
 function createBoard() {
     shuffle(cardsArray);
     cardsArray.forEach((cardValue, index) => {
@@ -55,8 +36,11 @@ function createBoard() {
     });
 }
 
+// Virar a carta
 function flipCard() {
-    if (flippedCards.length === 2 || this.classList.contains('flipped') || this.classList.contains('matched')) {
+    if (flippedCards.length === 2 || 
+        this.classList.contains('flipped') || 
+        this.classList.contains('matched')) {
         return;
     }
 
@@ -69,6 +53,7 @@ function flipCard() {
     }
 }
 
+// Verificar se as cartas combinam
 function checkMatch() {
     const [card1, card2] = flippedCards;
 
@@ -76,10 +61,6 @@ function checkMatch() {
         matchedCards.push(card1, card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
-
-        // Exibir o nome do país quando duas cidades do mesmo país são combinadas
-        const country = citiesToCountry[card1.dataset.value];
-        setTimeout(() => alert(`Você combinou duas cidades da ${country}!`), 500);
     } else {
         setTimeout(() => {
             card1.classList.remove('flipped');
@@ -96,4 +77,5 @@ function checkMatch() {
     }
 }
 
+// Criar o tabuleiro
 createBoard();
