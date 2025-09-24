@@ -2,14 +2,14 @@ const board = document.getElementById('game-board');
 
 // Cartas e suas imagens
 const cardsArray = [
-    '🍎', '🍎',
-    '🍌', '🍌',
-    '🍇', '🍇',
-    '🍉', '🍉',
-    '🍓', '🍓',
-    '🍊', '🍊',
-    '🍍', '🍍',
-    '🍒', '🍒',
+    'Paris', 'Lyon',
+    'Madrid', 'Barcelona',
+    'São Paulo', 'Belo Horizonte',
+    'Roma', 'Turim',
+    'Atenas', 'Santorini',
+    'Acapulco', 'Cancún',
+    'Toronto', 'Vancouver',
+    'Sydney', 'Perth',
 ];
 
 // Embaralhar as cartas
