@@ -3,7 +3,7 @@ let cards = [];
 let flippedCards = [];
 let matchedCards = 0;
 
-// Definindo os pares de cartas
+// Definindo os pares de cartas 
 const cardValues = ['🍎', '🍌', '🍇', '🍓', '🍉', '🍊', '🍍', '🍓'];
 const allCards = [...cardValues, ...cardValues]; // Duplicando para formar os pares
 
