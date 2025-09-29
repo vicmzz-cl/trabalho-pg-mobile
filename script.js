@@ -1,75 +1,80 @@
-const cards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-let board = document.getElementById("board");
-let cardValues = [...cards, ...cards]; // Duplicando as cartas para fazer os pares
+const gameBoard = document.getElementById('gameBoard');
+let cards = [];
 let flippedCards = [];
-let matchedCards = [];
+let matchedCards = 0;
 
-// Embaralha as cartas
+// Definindo os pares de cartas
+const cardValues = ['🍎', '🍌', '🍇', '🍓', '🍉', '🍊', '🍍', '🍓'];
+const allCards = [...cardValues, ...cardValues]; // Duplicando para formar os pares
+
+// Função para embaralhar as cartas
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Troca os elementos
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-// Cria e exibe as cartas no tabuleiro
+// Função para criar as cartas no tabuleiro
 function createBoard() {
-    shuffle(cardValues);
-    board.innerHTML = ''; // Limpa o tabuleiro
-
-    cardValues.forEach((value, index) => {
+    shuffle(allCards);
+    allCards.forEach((value, index) => {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.setAttribute('data-index', index);
-        card.setAttribute('data-value', value);
-        card.textContent = '?';
+        card.dataset.index = index;
+        card.dataset.value = value;
         card.addEventListener('click', flipCard);
-        board.appendChild(card);
+        gameBoard.appendChild(card);
+        cards.push(card);
     });
 }
 
-// Vira a carta ao ser clicada
-function flipCard(event) {
-    const clickedCard = event.target;
-    if (flippedCards.length < 2 && !clickedCard.classList.contains('flipped') && !matchedCards.includes(clickedCard)) {
-        clickedCard.textContent = clickedCard.getAttribute('data-value');
-        clickedCard.classList.add('flipped');
-        flippedCards.push(clickedCard);
+// Função para virar a carta
+function flipCard() {
+    if (flippedCards.length === 2 || this.classList.contains('flipped') || this.classList.contains('matched')) return;
 
-        if (flippedCards.length === 2) {
-            checkMatch();
-        }
+    this.classList.add('flipped');
+    this.textContent = this.dataset.value;
+    flippedCards.push(this);
+
+    if (flippedCards.length === 2) {
+        checkMatch();
     }
 }
 
-// Verifica se as duas cartas viradas são iguais
+// Função para verificar se as cartas viradas são iguais
 function checkMatch() {
-    const [card1, card2] = flippedCards;
+    const [firstCard, secondCard] = flippedCards;
 
-    if (card1.getAttribute('data-value') === card2.getAttribute('data-value')) {
-        matchedCards.push(card1, card2);
-        flippedCards = [];
-        if (matchedCards.length === cardValues.length) {
-            setTimeout(() => alert('Você ganhou!'), 500);
+    if (firstCard.dataset.value === secondCard.dataset.value) {
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        matchedCards++;
+
+        if (matchedCards === cardValues.length) {
+            setTimeout(() => alert('Parabéns! Você venceu!'), 500);
         }
+
+        flippedCards = [];
     } else {
         setTimeout(() => {
-            card1.textContent = '?';
-            card2.textContent = '?';
-            card1.classList.remove('flipped');
-            card2.classList.remove('flipped');
+            firstCard.classList.remove('flipped');
+            secondCard.classList.remove('flipped');
+            firstCard.textContent = '';
+            secondCard.textContent = '';
             flippedCards = [];
         }, 1000);
     }
 }
 
-// Reinicia o jogo
-document.getElementById('resetBtn').addEventListener('click', () => {
-    cardValues = [...cards, ...cards];
+// Função para reiniciar o jogo
+function resetGame() {
+    gameBoard.innerHTML = '';
+    cards = [];
     flippedCards = [];
-    matchedCards = [];
+    matchedCards = 0;
     createBoard();
-});
+}
 
-// Inicia o jogo
+// Inicializando o jogo
 createBoard();
