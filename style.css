@@ -14,7 +14,7 @@ body {
         rgb(59,88,93),
         rgb(29,40,42)
     );
-    color: #333;
+    color: #ffffff;
 }
 
 .game-container {
@@ -36,7 +36,7 @@ h1 {
 .card {
     width: 100px;
     height: 100px;
-    background-color: #3498db;
+    background-color: #780505;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -49,18 +49,18 @@ h1 {
 
 .card.flipped {
     color: #fff;
-    background-color: #2ecc71;
+    background-color: #0c4f8a;
 }
 
 .card.matched {
-    background-color: #f39c12;
+    background-color: #6d0791;
     cursor: default;
 }
 
 .reset-btn {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #e74c3c;
+    background-color: #4f7bb0;
     color: white;
     border: none;
     border-radius: 5px;
