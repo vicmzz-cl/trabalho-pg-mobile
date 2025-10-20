@@ -3,11 +3,9 @@ let cards = [];
 let flippedCards = [];
 let matchedCards = 0;
 
-// Definindo os pares de cartas 
 const cardValues = ['🇯🇵', '🇩🇪', '🇬🇷', '🇫🇷', '🇪🇸', '🇮🇹', '🇩🇰', '🇧🇷'];
-const allCards = [...cardValues, ...cardValues]; // Duplicando para formar os pares
+const allCards = [...cardValues, ...cardValues];
 
-// Função para embaralhar as cartas
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -15,7 +13,6 @@ function shuffle(array) {
     }
 }
 
-// Função para criar as cartas no tabuleiro
 function createBoard() {
     shuffle(allCards);
     allCards.forEach((value, index) => {
@@ -29,7 +26,6 @@ function createBoard() {
     });
 }
 
-// Função para virar a carta
 function flipCard() {
     if (flippedCards.length === 2 || this.classList.contains('flipped') || this.classList.contains('matched')) return;
 
@@ -42,7 +38,6 @@ function flipCard() {
     }
 }
 
-// Função para verificar se as cartas viradas são iguais
 function checkMatch() {
     const [firstCard, secondCard] = flippedCards;
 
@@ -67,7 +62,6 @@ function checkMatch() {
     }
 }
 
-// Função para reiniciar o jogo
 function resetGame() {
     gameBoard.innerHTML = '';
     cards = [];
